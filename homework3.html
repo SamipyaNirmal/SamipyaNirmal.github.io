@@ -1,84 +1,187 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> HOME|BON </title>
+	<title> Home | BÖN </title>
+	<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 	<style type="text/css">
+	h1.start
+	{
+		color: #0000e6;
+		margin-left: 45px;
+		line-height: 15px;
+	}
+	body
+	{
+		margin:0;
+		padding:0;
+	}
+	hr
+	{
+		height: 0px;
+        border: none;
+        border-top: 0.8px solid black;
+    } 
+    p.menu
+    {
+    	font-family: Arial, Helvetica, sans-serif;
+    	line-height: 15px;
+    }
+   /* div.container
+    {
+    	width: 1200px;
+    	height: 420px;
+    	margin-left: 45px;
+    	object-fit: cover;
+    }*/
 	div.main
 	{
 
-		height: 300px;
-		width: 550px;
+		height: 420px;
+		width: 1200px;
 		background-image:url('https://csci571.com/hw/hw3/images/Cutlery.png');
+		background-size: 1200px 670px;
 		background-repeat: no-repeat;
-		background-size: 600px 400px;
 		background-attachment: fixed;
-		margin-left: 30px;
+		margin-left: 45px;
+		object-fit: cover;
 	}
+	h1.fall
+	{
+		color: blue;
+		font-size: 60px;
+		padding-top:50px;
+		margin-left:40px;
+	}
+    #b1
+	{
+		margin-left: 45px;
+		background-color: white;
+        border: none;
+        color: black;
+        padding: 10px 12px;
+  		text-align: center;
+   		text-decoration: none;
+  		display: inline-block;
+  		font-size: 14px;
+	}
+	div.line
+    {
+    	height: 70px;
+    	width: 650px;
+    	font-family: 'Abril Fatface', cursive;
+    	color: #1a1aff;
+    	letter-spacing: 2px;
+    	margin-left: 400px;
+    }
 	 div.container1 { 
-            width:560px; 
-            height:260px; 
-            margin-left: 32px;
+            width:1185px; 
+            height:290px; 
+            margin-left: 48px;
     } 
-    div.container2 { 
-            width:560px; 
-            height:260px; 
-            margin-left: 32px;
-    } 
-	div.one
+    div.one
 	{
 		height:250px;
-		width: 260px;
+		width: 570px;
 		float: left;
 		background-image:url(https://csci571.com/hw/hw3/images/Decor.png);
-		background-size: 300px 250px;
-		border-right: 10px solid lightblue;
-	}
-	div.two
-	{
-		height:250px;
-		width: 260px;
-		float: left;
-		background-image:url(https://csci571.com/hw/hw3/images/Kitchen.png);
-		background-size: 300px 250px;
-		border-right: 10px solid lightblue;
+		background-repeat: no-repeat;
+		background-size: 570px 250px;
+		border-right: 15px solid lightblue;
 	}
 	div.three
 	{
 		height:250px;
-		width: 260px;
+		width: 570px;
 		float: right;
 		background-image:url(https://csci571.com/hw/hw3/images/Bedroom.png);
-		background-size: 300px 250px;
-		border-right: 10px solid lightblue;
+		background-repeat: no-repeat;
+		background-size: 570px 250px;
+		border-right: 15px solid lightblue;
+	}
+	div.holder
+	{
+		height: 15px;
+		width:700px;
+		margin-left:300px;
+	}
+	div.Decor
+	{ 
+		color: blue;
+		float: left;
+	}
+	div.Bedroom
+	{
+		float: right;
+		color:blue;
+	}
+    div.container2 { 
+            width:1185px; 
+            height:290px; 
+            margin-left: 48px;
+    } 
+	div.two
+	{
+		height:250px;
+		width: 570px;
+		float: left;
+		background-image:url(https://csci571.com/hw/hw3/images/Kitchen.png);
+		background-repeat: no-repeat;
+		background-size: 570px 250px;
+		border-right: 15px solid lightblue;
 	}
 	div.four
 	{
 		height:250px;
-		width: 260px;
+		width: 570px;
 		float: right;
 		background-image:url(https://csci571.com/hw/hw3/images/Bathroom.png);
-		background-size: 300px 250px;
-		border-right: 10px solid lightblue;
+		background-repeat: no-repeat;
+		background-size: 570px 250px;
+		border-right: 15px solid lightblue;
 	}
-	#b1{
-		margin-top: 100px;
-		margin-left: 15px;
+	div.Kitchen
+	{
+		color: blue;
+		float: left;
+	}
+	div.Bath
+	{
+		color:blue;
+		float: right;
 	}
 </style>
 </head>
 <body>
-<p>The background-image is fixed. Try to scroll down the page.</p>
+<h1 class="start"> BÖN</h1>
+<hr>
+<p class="menu">
+	<pre style="padding-left: 45px;font-family: Helvetica, sans-serif;font-size:12px;font-weight:bolder;"><span style="color: #0000ff;">Home</span>    Decor    Your Kitchen    Your Bathroom    Your Bedroom    About    Contact</pre>
+</p>
 <div class="main">
-	<button id="b1" type="button" >Shop Now</button>
+	<h1 class="fall">Fall Cutlery
+	<br>
+	Collection
+	</h1>
+	<button id="b1" type="button" ><b>Shop Now</b></button>
 </div>
 <br>
-<br>
+<div class="line">
+	<h1>Defining Styling since 1965</h1>
+</div>
 <div class="container1">
 	<div class="one"> 
     </div>
 	<div class="three"> 
 	</div>
 </div>
+<div class="holder">
+<div class="Decor"><b>Decor</b></div>
+<div class="Bedroom"><b>Your Bedroom</b></div>
+</div>
+<br>
+<br>
+<br>
+<br>
 <br>
 <div class="container2">
 	<div class="two">
@@ -86,5 +189,12 @@
 	<div class="four"> 
 	</div>
 </div>
+<div class="holder">
+<div class="Kitchen"><b>Your Kitchen</b></div>
+<div class="Bath"><b>Your Bathroom</b></div>
+</div>
+<br>
+<br>
+<br>
 </body>
 </html>
