@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="03076b03-150b-4ac1-b922-28031ca2cc40" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/stocksclient/src/app/PortfolioData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/stocksclient/src/assets/caretdown.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/stocksclient/src/assets/caretup.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/stocksclient/src/assets/star.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/stocksclient/src/assets/startfill.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/polyfills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/stocksclient/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/stocksclient/src/styles.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client/stocksclient" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/client/stocksclient/src/app/basicdetails.service.ts" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="1j1BbMUDhZt4thmmsyD7nZoAtgW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\samip\OneDrive\Desktop\CSCI571\homework8\client\stocksclient\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\samip\OneDrive\Desktop\CSCI571\homework8\client\stocksclient\src\app\details\top-news" />
+      <recent name="C:\Users\samip\OneDrive\Desktop\CSCI571\homework8\client\stocksclient\src\app\details" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="03076b03-150b-4ac1-b922-28031ca2cc40" name="Default Changelist" comment="" />
+      <created>1602961789096</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602961789096</updated>
+      <workItem from="1602961790397" duration="253794000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ts" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="430" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603409622028">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="430" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1360.728@0.0.1360.728" timestamp="1603409622028" />
+    <state x="410" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603412485466">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="410" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1360.728@0.0.1360.728" timestamp="1603412485466" />
+    <state width="1339" height="179" key="GridCell.Tab.0.bottom" timestamp="1603156654799">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="179" key="GridCell.Tab.0.bottom/0.0.1360.728@0.0.1360.728" timestamp="1603156654799" />
+    <state width="1339" height="179" key="GridCell.Tab.0.center" timestamp="1603156654799">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="179" key="GridCell.Tab.0.center/0.0.1360.728@0.0.1360.728" timestamp="1603156654799" />
+    <state width="1339" height="179" key="GridCell.Tab.0.left" timestamp="1603156654798">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="179" key="GridCell.Tab.0.left/0.0.1360.728@0.0.1360.728" timestamp="1603156654798" />
+    <state width="1339" height="179" key="GridCell.Tab.0.right" timestamp="1603156654799">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1339" height="179" key="GridCell.Tab.0.right/0.0.1360.728@0.0.1360.728" timestamp="1603156654799" />
+    <state x="0" y="0" width="585" height="728" key="find.popup" timestamp="1603422474511">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="0" y="0" width="585" height="728" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1603422474511" />
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603329760085">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1603329760085" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/stocksclient/src/app/portfolio/portfolio.component.html</url>
+          <line>85</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
