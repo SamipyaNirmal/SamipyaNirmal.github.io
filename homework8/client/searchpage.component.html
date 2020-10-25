@@ -1,0 +1,27 @@
+<form>
+    <p class="h1" id="heading">STOCK SEARCH</p>
+    <br>
+      <div class="row">
+        <div id="search-box" >
+        <input #search
+               matInput
+               placeholder="Enter stock name"
+               aria-label="stock"
+               [matAutocomplete]="auto"
+               [formControl]="searchcntrl" >
+        <span id="submit-search" style="margin-left:-30px;color:#7C5FFB;cursor:pointer;" (click)="onSearchSubmit(search.value)">
+          <i class="fa fa-search"></i>
+<!--          <button class="search-button"><i class="fa fa-search"></i></button>-->
+        </span>
+        </div>
+        <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngIf="wait"><mat-spinner diameter="35"></mat-spinner></mat-option>
+        <ng-container *ngIf="!wait">
+          <mat-option *ngFor="let state of searchdata" [value]="state.ticker">
+            <span>{{state.ticker | uppercase}}</span> |
+            <span>{{state.name}}</span>
+          </mat-option>
+        </ng-container>
+        </mat-autocomplete>
+    </div>
+  </form>

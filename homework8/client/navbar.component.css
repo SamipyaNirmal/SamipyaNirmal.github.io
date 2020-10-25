@@ -1,0 +1,9 @@
+.active
+{
+    border: 0.15rem solid #FFFFFF;
+    border-radius: 15px;
+}
+.nav-link
+{
+    padding-right:10px;
+}

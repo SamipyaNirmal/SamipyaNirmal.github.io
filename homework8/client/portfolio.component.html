@@ -1,0 +1,109 @@
+<div class="container" style="margin-top: 100px">
+  <p class="header"><b>My Portfolio</b></p>
+  <div *ngIf="isLoading" style="left:50%; position:fixed;">
+    <mat-spinner diameter="35"></mat-spinner>
+  </div>
+  <div *ngIf="!isLoading && data.length==0">
+    <div class="alert alert-warning myalert" role="alert">
+      Currently you don't have any stock.
+    </div>
+  </div>
+  <div *ngIf="data && !isLoading">
+    <div class="row">
+      <div class="col-sm-12 col-md-12" *ngFor="let d of data">
+        <div class="card top-buffer">
+          <div class="card-header">
+            <div class="ticker">{{d.ticker|uppercase}}  <span class="name">{{d.companyName |titlecase}}</span></div>
+          </div>
+          <div class="card-body body-font">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="row">
+                  <div class="col col-sm-6">
+                      <div>Quantity:</div>
+                      <div>Avg. Cost / Share:</div>
+                      <div>Total Cost:</div>
+                  </div>
+                  <div class="col col-sm-6" align="right">
+                    <div>{{d.quantity}}</div>
+                    <div>{{(d.totalCost/d.quantity)| number:'1.0-3'}}</div>
+                    <div>{{d.totalCost| number:'1.0-3'}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6" align="right">
+                <div class="row">
+                  <div class="col col-sm-6" align="left">
+                      <div>Change:</div>
+                      <div>Current Price:</div>
+                      <div>Market Value:</div>
+                  </div>
+                  <div class="col col-sm-6" align="right">
+                      <div *ngIf="(d.totalCost/d.quantity)-(d.lastPrice)<0">
+                        <img src="assets/caretdown.svg" width="15" height="32">
+                        <span style="color: red">{{((d.totalCost/d.quantity)-(d.lastPrice))| number:'1.0-3'}}</span>
+                        <div style="color: red">{{d.lastPrice| number:'1.0-3'}}</div>
+                        <div style="color: red">{{(d.lastPrice * d.quantity)| number:'1.0-3'}}</div>
+                      </div>
+                      <div *ngIf="(d.totalCost/d.quantity)-(d.lastPrice)>0">
+                        <img src="assets/caretup.svg" width="15" height="32">
+                        <span style="color: green">{{((d.totalCost/d.quantity)-(d.lastPrice))| number:'1.0-3'}}</span>
+                        <div style="color: green">{{d.lastPrice| number:'1.0-3'}}</div>
+                        <div style="color: green">{{(d.lastPrice * d.quantity)| number:'1.0-3'}}</div>
+                      </div>
+                      <div *ngIf="(d.totalCost/d.quantity)-(d.lastPrice)==0">
+                        <span style="color: black">{{((d.totalCost/d.quantity)-(d.lastPrice))| number:'1.0-3'}}</span>
+                        <div style="color: black">{{d.lastPrice}}</div>
+                        <div style="color: black">{{(d.lastPrice * d.quantity)| number:'1.0-3'}}</div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="card-footer buttons">
+            <button type="button" class="btn btn-primary" style="margin-right: 10px" (click)="openBuy(buymodel)">Buy</button>
+            <ng-template #buymodel>
+              <div class="modal-header">
+                <h4 class="modal-title">{{d.ticker | uppercase}}</h4>
+                <button type="button" class="close" (click)="closeBuy(buymodel)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>Current Price: {{d.lastPrice}} </div>
+                <div>Quantity: <input type="number" class="enter" [(ngModel)]="quantity" onclick="this.select()"></div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <div>
+                  Total: {{ (d.lastPrice*quantity).toFixed(2)}}
+                </div>
+                <button type="button" class="btn btn-success buystock" (click)="buy(d.ticker,buymodel,((d.lastPrice*quantity)))" [disabled]="quantity<=0">Buy</button>
+              </div>
+            </ng-template>
+            <button type="button" class="btn btn-danger" (click)="openSell(sellmodel)">Sell</button>
+            <ng-template #sellmodel>
+              <div class="modal-header">
+                <h4 class="modal-title">{{d.ticker | uppercase}}</h4>
+                <button type="button" class="close" (click)="closeSell(sellmodel)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>Current Price: {{d.lastPrice}} </div>
+                <div>Quantity: <input type="number" class="enter" [(ngModel)]="quantity" onclick="this.select()"></div>
+              </div>
+              <div class="modal-footer justify-content-between">
+                <div>
+                  Total: {{ (d.lastPrice*quantity).toFixed(2)}}
+                </div>
+                <button type="button" class="btn btn-success buystock" (click)="sell(d.ticker,sellmodel,(d.lastPrice*quantity))" [disabled]="quantity<=0 || quantity>d.quantity">Sell</button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div style="height: 40px"></div>
+</div>

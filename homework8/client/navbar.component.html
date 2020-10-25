@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color:#7C5FFB" >
+    <a class="navbar-brand" style="color:white;">Stock Search</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <a class="nav-link" routerLink="/">Search <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/watchlist">Watchlist</a>
+          </li>
+        <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/portfolio">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

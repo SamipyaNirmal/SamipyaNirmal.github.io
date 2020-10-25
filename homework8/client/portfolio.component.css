@@ -1,0 +1,40 @@
+.header
+{
+  font-weight: 500;
+  font-size:30px;
+}
+.myalert
+{
+  height: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+.top-buffer
+{
+  margin-top: 20px;
+}
+.gray
+{
+  color: gray;
+}
+.buttons
+{
+  text-align: right;
+}
+.ticker
+{
+  font-weight: 500;
+  font-size:28px;
+}
+.name
+{
+  font-size:18px;
+}
+.close
+{
+  outline: none;
+}
+.body-font
+{
+  font-size: 18px;
+}

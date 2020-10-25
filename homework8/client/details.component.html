@@ -1,0 +1,109 @@
+<div style="padding-top: 100px; left:50%; position:fixed;" *ngIf="isWaiting else loaded">
+  <mat-spinner diameter="35"></mat-spinner>
+</div>
+<ng-template #loaded>
+  <div *ngIf="!setAlert">
+    <div class="container"  *ngIf="detailsdata">
+      <div class="alert alert-success" role="alert" style="text-align: center" *ngIf="watchlist && alertStatus" >
+        {{detailsdata.ticker | uppercase}} is added to Watchlist
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-success" role="alert" style="text-align: center" *ngIf="portfolio" >
+        {{detailsdata.ticker | uppercase}} bought successfully!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-danger" role="alert" style="text-align: center" *ngIf="!watchlist && alertStatus" >
+        {{detailsdata.ticker | uppercase}} is removed from Watchlist
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class=" col col-sm-6 col-md-6  col-xs-6" align="left">
+          <div *ngIf="watchlist" id="top">
+            {{detailsdata.ticker | uppercase}}
+            <img src="assets/startfill.svg" width="15" height="32" (click)="selectStar()">
+          </div>
+          <div *ngIf="!watchlist" id="top">
+            {{detailsdata.ticker | uppercase}}
+            <img src="assets/star.svg" width="15" height="32" (click)="selectStar()">
+          </div>
+          <div id="middle">
+            {{detailsdata.companyName | titlecase}}
+          </div>
+          <div id="low">
+            {{detailsdata.exchangeCode}}
+          </div>
+          <div>
+            <button type="button" class="btn btn-success" (click)="open(buymodel)">Buy</button>
+          </div>
+          <ng-template #buymodel>
+            <div class="modal-header">
+              <h4 class="modal-title">{{detailsdata.ticker | uppercase}}</h4>
+              <button type="button" class="close" (click)="close(buymodel)">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div>Current Price: {{detailsdata.lastPrice}} </div>
+              <div>Quantity: <input type="number" class="enter" [(ngModel)]="quantity" onclick="this.select()"></div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <div>
+                Total: {{ (detailsdata.lastPrice*quantity).toFixed(2)}}
+              </div>
+              <button type="button" class="btn btn-success buystock" (click)="buyShares(buymodel)" [disabled]="quantity<=0">Buy</button>
+            </div>
+          </ng-template>
+        </div>
+        <div class="col col-sm-6 col-xs-6 col-md-6 " align="right">
+          <div *ngIf="color==1" style="color:green;" id="top">
+            {{detailsdata.lastPrice}}
+          </div>
+          <div *ngIf="color==2" style="color:#ff0000;" id="top">
+            {{detailsdata.lastPrice}}
+          </div>
+          <div *ngIf="color==0" id="top">
+            {{detailsdata.lastPrice}}
+          </div>
+          <div *ngIf="color==1" style="color:green;" id="middle">
+            <img src="assets/caretup.svg" width="15" height="32">
+            {{ detailsdata.change }} ({{ detailsdata.changePercent }}%)
+          </div>
+          <div *ngIf="color==2" style="color:red;" id="middle">
+            <img src="assets/caretdown.svg" width="15" height="32">
+            {{ detailsdata.change }} ({{ detailsdata.changePercent }}%)
+          </div>
+          <div *ngIf="color==0" id="middle">
+            {{ detailsdata.change }} ({{ detailsdata.changePercent }}%)
+          </div>
+          <div id="low">
+            {{detailsdata.currentTimestamp | date: 'yyyy-MM-dd HH:mm:ss'}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <p style="text-align: center;margin:auto" *ngIf="market">
+          <span style="text-align: center;background-color: #D7EDDA;"> Market is Open</span>
+        </p>
+        <p style="text-align: center;margin:auto" *ngIf="!market">
+          <span style="text-align: center;background-color: #F5D7D9;"> Market Closed on {{detailsdata.lastTimestamp | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+        </p>
+      </div>
+      <mat-tab-group animationDuration="0ms">'
+        <mat-tab label="Summary"> <app-summary></app-summary> </mat-tab>
+        <mat-tab label="Top News"> <app-top-news></app-top-news></mat-tab>
+        <mat-tab label="Charts"> <app-daily-charts></app-daily-charts></mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div *ngIf="setAlert" class="container error-ticker">
+    <div class="alert alert-danger " role="alert">
+      No results found. Please enter valid Ticker
+    </div>
+  </div>
+</ng-template>
