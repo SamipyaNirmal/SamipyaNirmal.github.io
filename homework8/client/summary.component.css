@@ -1,0 +1,16 @@
+.top-buffer
+{
+  padding-top:40px;
+  align-self: center;
+  font-size: large;
+  font-weight: bold;
+  margin-left: 25%;
+}
+.top-buffer-next
+{
+  margin-top:20px;
+}
+.charts-space
+{
+  padding-top: 10px;
+}

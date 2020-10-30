@@ -1,0 +1,42 @@
+.myalert
+{
+  height: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+h1
+{
+  font-size: 32px;
+  font-weight: 400;
+}
+.top-buffer
+{
+  margin-top: 10px;
+}
+.close
+{
+  text-align: right;
+  margin-top: -5px;
+  font-size: 20px;
+  padding: 5px;
+}
+.header{
+  height: 15px;
+}
+#top
+{
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 34px;
+}
+#middle
+{
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 500;
+}
+.card-body
+{
+  padding-top: 0;
+  padding-bottom: 10px;
+}

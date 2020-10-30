@@ -1,0 +1,36 @@
+#heading
+{
+    padding-top: 120px;
+    font-weight: bold;
+    font-size: 60px;
+    text-align: center;
+}
+
+#search-box {
+    margin: auto;
+}
+
+#search-box > input
+{
+    border:2px solid #7C5FFB;
+    border-radius:25px;
+    height: 35px;
+    padding-left: 10px;
+    width: 13rem;
+}
+#search-box > input:focus {
+    outline: none;
+}
+.search-button
+{
+  outline: none;
+  border: 0;
+  background-color: white;
+}
+.search-button:hover
+{
+  outline-color: skyblue;
+}
+
+
+

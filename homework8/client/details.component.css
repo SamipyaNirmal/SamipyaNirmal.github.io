@@ -1,0 +1,49 @@
+.container
+{
+  padding-top: 70px;
+}
+#top
+{
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 30px;
+}
+#middle
+{
+  color: gray;
+  font-size: 28px;
+  line-height: 33px;
+}
+#low
+{
+line-height: 25px;
+}
+.error-ticker
+{
+  padding-top:100px ;
+  margin:auto;
+  text-align: center;
+}
+.top-buffer
+{
+  padding-top: 30px;
+}
+::ng-deep.mat-tab-link,  ::ng-deep.mat-tab-label{
+  min-width: 33.33% !important;
+}
+.close
+{
+  outline: none;
+}
+.buystock
+{
+  align:right;
+}
+input[type=number]:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+  outline: none;
+}
+
