@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Search</title>
+    <style type="text/css">
+        div.searchbox
+        {
+            height: 240px;
+            width: 900px;
+            margin-left: 230px;
+            font-family: sans-serif;
+            background-color: #E8E8E8;
+            margin-top: 25px;
+            border-radius: 3px;
+        }
+        .search
+        {
+            padding-top: 25px;
+            column-gap:40px;
+        }
+        .search td
+        {
+            padding:10px;
+
+        }
+        .special
+        {
+            padding: 5px 20px;
+            background-color: #F5F5F5;
+            border: none;
+            border-radius: 5px;
+            width:90px;
+            height: 30px;
+        }
+        hr
+        {
+            width: 898px;
+            margin-top: 12px;
+            color: #E8E8E8;
+            margin-left: 230px;
+        }        
+        #buttons
+        {
+            display: none;
+            width: 900px;
+            height: 40px;
+            margin-left: 230px;
+            background-color: #F5F5F5;
+            border:none;
+            margin-top: 12px;
+        }
+        .tabs
+        {
+            border: none;
+            background-color:#F5F5F5;
+            height: 40px;
+            outline:none;
+            font-size:16px;
+            padding-right:10px;
+        }
+        #res
+        {
+            width: 900px;
+            margin-left: 230px;
+            display: none;
+            margin-top: 35px;
+        }
+        .key
+        {
+            background-color:#E8E6E6;
+            width:300px;
+            line-height: 20px;
+        }
+        .value
+        {
+            background-color: #F5F5F5;
+            text-align:center;
+            line-height: 20px;
+        }
+        #summarytable,#outlooktable
+        {
+            width: 900px;
+            font-family: sans-serif;
+            border: solid 1px #CBCBCB;
+        }
+        #outlooktable tr,#summarytable tr
+        {
+            border: solid 1px #CBCBCB;
+        }
+        #outlooktable td,#summarytable td
+        {
+            border: solid 1px #CBCBCB;
+        }
+        #element
+        {
+            background-color: #F5F5F5;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align:center;
+        }
+        #newsitem
+        {
+            width: 900px;
+            height: 100px;
+            background-color: #E8E8E8;
+            border-radius: 3px;
+        }
+        #newsinfo
+        {
+            float: center;
+            padding-top: 15px;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+        #error
+        {
+            text-align: center;
+            font-family: sans-serif;
+        }
+        #wrong
+        {
+            margin-top: 35px;
+            display: none;
+            width:700px;
+            margin-left: 340px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+    </style>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+    <script type="text/javascript">
+    var noChartData=0;
+    var symbolticker="";
+    function searchcall()
+    {
+        document.getElementById("buttons").style.display="none";
+        document.getElementById("res").style.display="none";
+        document.getElementById("outlook").style.backgroundColor="#CBCBCB";
+        document.getElementById("outlook").style.border="none";
+        document.getElementById("summary").style.backgroundColor="#F5F5F5";
+        document.getElementById("charts").style.backgroundColor="#F5F5F5";
+        document.getElementById("news").style.backgroundColor="#F5F5F5";
+        var req=new XMLHttpRequest();
+        symbolticker=document.getElementById("symbol").value;
+        var restext="";
+        req.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status == 200)
+            {
+                    var obj=JSON.parse(this.responseText);
+                    if( obj.name==null)
+                    {
+                        document.getElementById("wrong").style.display="block";
+                        restext="<b>Error: No record has been found, please enter a valid symbol.</b>";
+                        document.getElementById("wrong").innerHTML=restext;
+                    }
+                    else
+                    {
+                        document.getElementById("buttons").style.display="block";
+                        document.getElementById("wrong").style.display="none";
+                        document.getElementById("res").style.display="block";
+                        restext+="<table id='outlooktable' cellspacing=0> <tr><td class='key'><b> Company Name</b></td>";
+                        restext+="<td class='value'>"+obj.name+"</td></tr>";
+                        restext+="<tr ><td class='key'><b>Stock Ticker Symbol</b></td>";
+                        restext+="<td class='value'>"+obj.ticker+"</td></tr>";
+                        restext+="<tr><td class='key'><b>Stock Exchange Code</b></td>";
+                        restext+="<td class='value'>"+obj.exchangeCode+"</td></tr>";
+                        restext+="<tr ><td class='key'><b>Company Start Date</b></td>";
+                        restext+="<td class='value'>"+obj.startDate+"</td></tr>";
+                        restext+="<tr><td class='key'><b>Description</b></td>";
+                        restext+="<td id='element' >"+obj.description+"</td></tr>";
+                        document.getElementById("res").innerHTML=restext;
+                    }          
+            }
+        };
+        req.open("GET","/search/"+symbolticker,true);
+        req.send();
+    }
+    function callBackend()
+    {
+        document.getElementById("outlook").style.backgroundColor="#CBCBCB";
+        document.getElementById("summary").style.backgroundColor="#F5F5F5";
+        document.getElementById("charts").style.backgroundColor="#F5F5F5";
+        document.getElementById("news").style.backgroundColor="#F5F5F5";
+        var req=new XMLHttpRequest();
+        var restext="";
+        req.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status == 200)
+            {
+                var obj=JSON.parse(this.responseText);
+                restext+="<table id='outlooktable' cellspacing=0> <tr><td class='key'><b> Company Name</b></td>";
+                restext+="<td class='value'>"+obj.name+"</td></tr>";
+                restext+="<tr ><td class='key'><b>Stock Ticker Symbol</b></td>";
+                restext+="<td class='value'>"+obj.ticker+"</td></tr>";
+                restext+="<tr><td class='key'><b>Stock Exchange Code</b></td>";
+                restext+="<td class='value'>"+obj.exchangeCode+"</td></tr>";
+                restext+="<tr ><td class='key'><b>Company Start Date</b></td>";
+                restext+="<td class='value'>"+obj.startDate+"</td></tr>";
+                restext+="<tr><td class='key'><b>Description</b></td>";
+                restext+="<td id='element' >"+obj.description+"</td></tr>";
+                document.getElementById("res").innerHTML=restext;
+               
+            }
+        };
+        req.open("GET","/search/"+symbolticker,true);
+        req.send();
+    }
+    function summary()
+    {
+        document.getElementById("summary").style.backgroundColor="#CBCBCB";
+        document.getElementById("outlook").style.backgroundColor="#F5F5F5";
+        document.getElementById("charts").style.backgroundColor="#F5F5F5";
+        document.getElementById("news").style.backgroundColor="#F5F5F5";
+        document.getElementById("summary").style.border="none";
+        var req=new XMLHttpRequest();
+        var restext="";
+        req.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status == 200)
+            {
+               var obj=JSON.parse(this.responseText);
+                restext+="<table id='summarytable' cellspacing=0> <tr><td class='key'><b> Stock Ticker Symbol</b></td>";
+                restext+="<td class='value'>"+obj[0].ticker+"</td></tr>";
+                restext+="<tr ><td class='key'><b>Trading Day</b></td>";
+                var d=new Date(obj[0].timestamp);
+                var month=d.getMonth()+1;
+                if(month<10)
+                    month="0"+month;
+                restext+="<td class='value'>"+d.getFullYear()+"-"+month+"-"+d.getDate()+"</td></tr>";
+                restext+="<tr><td class='key'><b>Previous Closing Price</b></td>";
+                restext+="<td class='value'>"+(obj[0].prevClose).toFixed(2)+"</td></tr>";
+                restext+="<tr ><td class='key'><b>Opening Price</b></td>";
+                restext+="<td class='value'>"+(obj[0].open).toFixed(2)+"</td></tr>";
+                restext+="<tr><td class='key'><b>High Price</b></td>";
+                restext+="<td class='value'>"+(obj[0].high).toFixed(2)+"</td></tr>";
+                restext+="<tr><td class='key'><b>Low Price</b></td>";
+                restext+="<td class='value'>"+(obj[0].low).toFixed(2)+"</td></tr>";
+                restext+="<tr><td class='key'><b>Last Price</b></td>";
+                restext+="<td class='value'>"+(obj[0].last).toFixed(2)+"</td></tr>";
+                restext+="<tr><td class='key'><b>Change</b></td>";
+                var change=(obj[0].last-obj[0].prevClose).toFixed(2);
+                if(change<0)
+                    restext+="<td class='value'>"+change+"<img src='https://csci571.com/hw/hw6/images/RedArrowDown.jpg' height=15px width=15px style='padding-left:10px;'></td></tr>";
+                else if(change==0)
+                    restext+="<td class='value'>"+change+"</td></tr>";
+                else
+                    restext+="<td class='value'>"+change+"<img src='https://csci571.com/hw/hw6/images/GreenArrowUp.jpg' height=15px width=15px style='padding-left:10px;'></td></tr>";
+                restext+="<tr><td class='key'><b>Change Percent</b></td>";
+                var changep=(change/obj[0].prevClose*100).toFixed(2);
+                if(changep<0)
+                    restext+="<td class='value'>"+changep+"%<img src='https://csci571.com/hw/hw6/images/RedArrowDown.jpg' height=15px width=15px style='padding-left:10px;'></td></tr>";
+                else if(changep==0)
+                    restext+="<td class='value'>"+changep+"</td></tr>";
+                else
+                    restext+="<td class='value'>"+changep+"%<img src='https://csci571.com/hw/hw6/images/GreenArrowUp.jpg' height=15px width=15px style='padding-left:10px;'></td></tr>";
+                restext+="<tr><td class='key'><b>Number of Shares Traded</b></td>";
+                restext+="<td class='value'>"+obj[0].volume+"</td></tr>";
+               document.getElementById("res").innerHTML=restext;
+            }
+        };
+        req.open("GET","/getsummary/"+symbolticker,true);
+        req.send();
+    }
+    function charts()
+    {
+        document.getElementById("charts").style.backgroundColor="#CBCBCB";
+        document.getElementById("summary").style.backgroundColor="#F5F5F5";
+        document.getElementById("outlook").style.backgroundColor="#F5F5F5";
+        document.getElementById("news").style.backgroundColor="#F5F5F5";
+        document.getElementById("charts").style.border="none";
+        var req=new XMLHttpRequest();
+        var mydate=new Date();
+        var month=mydate.getMonth()+1;
+        var myday=mydate.getDate();
+        if(myday<10)
+            myday="0"+myday;
+        if(month<10)
+            month="0"+month;
+        var symbol=symbolticker;
+        req.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status == 200)
+            {
+                var obj=JSON.parse(this.responseText);
+                if(obj=="" || obj==null)
+                {
+                    noChartData=1;
+                    restext="<div id='error'><b>No Data Available</b></div>";
+                    document.getElementById("res").innerHTML=restext;
+                    return;
+                }
+                noChartData=0;
+                var closedata=[];
+                var volumedata=[];
+                var i=0;
+                for(i;i<obj.length;i++)
+                {
+                    var d=new Date(obj[i].date);
+                    var curr=Date.UTC(d.getFullYear(),d.getMonth(),d.getDate());
+                    closedata.push([curr,obj[i].close]);
+                    volumedata.push([curr,obj[i].volume]);
+                }
+               Highcharts.stockChart('res', {
+                chart: {
+                    zoomType:'x'
+                },
+                title: {
+                    text:" Stock Price "+symbol.toUpperCase()+" "+ mydate.getFullYear()+"-"+month+"-"+myday
+                },
+                subtitle:
+                {
+                    text:'<u><a href="https://api.tiingo.com/" target="_blank" >Source: Tiingo</a></u>',
+                    useHTML: true
+                },
+                xAxis: {
+                    width:750,
+                    crosshair: true,
+                    endOnTick: true,
+                    startOnTick: true,
+                    minRange:3600*24*7*1000
+                },
+                yAxis: [{
+                    min:0,
+                    title: {
+                        text: 'Volume',
+                       
+                        },
+                        labels:
+                        {
+                            align:'center'
+                        }
+                    }, 
+                        {
+                        opposite: false,
+                        min:0,
+                            title: {
+                                text: 'Stock Price',
+                                
+                        }
+                    }],
+                rangeSelector: {
+                    allButtonsEnabled: true,
+                        buttons: [{
+                            type: 'day',
+                            count: 7,
+                            text: '7d'
+                        }, 
+                        {
+                            type: 'day',
+                            count: 15,
+                            text: '15d'
+                        },
+                        {
+                            type: 'month',
+                            count: 1,
+                            text: '1m'
+                        }, {
+                            type: 'month',
+                            count: 3,
+                            text: '3m'
+                        },
+                         {
+                            type: 'month',
+                            count: 6,
+                            text: '6m'
+                        }],
+                        selected: 4,
+                        inputEnabled: false
+                    },
+                    series: [{
+                      type: 'area',
+                      name: symbol.toUpperCase(),
+                      data: closedata,
+                      yAxis: 1,
+                      tooltip: {
+                            valueDecimals: 2
+                        },
+                    fillColor: {
+                linearGradient: {
+                    x1: 0,
+                    y1: 0,
+                    x2: 0,
+                    y2: 1
+                },
+                stops: [
+                    [0, Highcharts.getOptions().colors[0]],
+                    [1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                ]
+                 },
+                    threshold: null
+                     }, 
+                     {
+                       type: 'column',
+                       name: symbol.toUpperCase()+' Volume',
+                       data: volumedata,
+                       color: '#4b4b4b',
+                       maxPointWidth:2,
+                       pointPlacement:'on'
+                     }]  
+                });
+            }
+
+        };
+        req.open("GET","/getcharts/"+symbolticker,true);
+        req.send();
+    }
+    function news()
+    {
+        document.getElementById("news").style.backgroundColor="#CBCBCB";
+        document.getElementById("summary").style.backgroundColor="#F5F5F5";
+        document.getElementById("charts").style.backgroundColor="#F5F5F5";
+        document.getElementById("outlook").style.backgroundColor="#F5F5F5";
+        document.getElementById("news").style.border="none";
+        var req=new XMLHttpRequest();
+        var restext="";
+        req.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status == 200)
+            {
+                var obj=JSON.parse(this.responseText);
+                var t=Math.min(5,Object.keys(obj).length);
+                if(t==0)
+                {
+                    
+                    restext="<div id='error'><b>No Data Available</b></div>";
+                    document.getElementById("res").innerHTML=restext;
+                    return;
+                }              
+                for(i=0;i<t;i++)
+                {
+                    if(obj[i])
+                    restext+="<div id='newsitem'>";
+                    restext+="<img style='width:80px;height:80px;padding:10px 10px;float:left' src='"+obj[i].urlToImage+"'>";
+                    restext+="<div id='newsinfo'>";
+                    restext+="<span><b>"+obj[i].title+"</b></span><br>";
+                    var d=new Date(obj[i].publishedAt);
+                    var month=(d.getMonth()+1);
+                    if(month<10)
+                        month="0"+month;
+                    var day=d.getDate();
+                    if(day<10)
+                        day="0"+day;
+                    restext+="<span>Published Date: "+month+"/"+day+"/"+d.getFullYear()+"</span><br>";
+                    restext+="<span><a href='"+obj[i].url+"' target='_blank'>See Original Post</a></span>";
+                    restext+="</div>"
+                    restext+="</div>";
+                    restext+="<br>";
+                }
+                document.getElementById("res").innerHTML=restext;
+            }
+        };
+        req.open("GET","/getnews/"+symbolticker,true);
+        req.send();
+    }
+    function clearfnc()
+    {
+        document.getElementById("buttons").style.display="none";
+        document.getElementById("res").style.display="none";
+        document.getElementById("wrong").style.display="none";
+        var x=document.getElementsByClassName("highcharts-navigator");
+        x[0].style.visibility="hidden";
+    }
+    </script>
+</head>
+<body bgcolor="#6060A9">
+<div class="searchbox">
+<form onsubmit="event.preventDefault()">
+<h1 style="text-align: center;margin-bottom: 5px;padding-top: 50px">Stock Search</h1> 
+<br>
+<div style="width:600px;">
+<div style="padding-left: 255px;float:left;">Enter Stock Ticker Symbol <span style="color:red;">*</span> </div>
+<div style="float:right;"><input style="border: none;border-radius: 3px;width: 120px" type="text"  id="symbol" required></div>
+</div>
+<br>
+<br>
+<br>
+<div style="width:550px;">
+<div style="padding-left: 325px;float:left;"><button class="special" type="submit" onclick="searchcall()" >Search</button></div>
+<div style="float:right;"><button class="special" type="reset" onclick="clearfnc()" >Clear</button></div>
+</div>
+</form>
+</div>
+<hr>
+<div id="buttons">
+    <button class="tabs" id="outlook" onclick="callBackend()">Company Outlook</button>
+    <button class="tabs" id="summary" onclick="summary()">Stock Summary</button>
+    <button class="tabs" id="charts" onclick="charts()">Charts</button>
+    <button class="tabs" id="news" onclick="news()">Latest News</button>
+</div>
+<div id="wrong">
+</div>
+<div id="res">
+</div>
+<br>
+<br>
+<br>
+</body>
+</html>
